@@ -60,6 +60,7 @@
                 $endereco = $_POST["endereco"];
                 $datanasc = $_POST["datanasc"];
                 $arq = $_FILES["arq"]["name"];
+                $cpf = $_POST["CPF"];
 
                 // Formatar para dd-mm-yyyy
                 $dataFormatada = date("d-m-Y", strtotime($datanasc));
@@ -77,6 +78,7 @@
                 echo "\t<p><b>Endereço:</b> $endereco</p>\n";
                 echo "\t<p><b>Data Nasc.:</b> $dataFormatada</p>\n";
                 echo "\t<p><b>Arquivo:</b> $arq</p>\n";
+                echo "\t<p><b>CPF:</b> $cpf</p>\n";
                 echo "\t<p><b>Manter Login:</b> $manterLogin</p>\n";
             }
             ?>

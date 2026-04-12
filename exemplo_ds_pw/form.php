@@ -47,7 +47,7 @@
 <body>
     <nav class="navbar">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand">
                 <img src="img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
                 Urbus
             </a>
@@ -72,13 +72,17 @@
                 </div>
                 <div class="col-md-2">
                     <label for="arq" class="form-label">Imagem</label>
-                    <input type="file" class="form-control" id="arq" name="arq" accept="image/*" required
+                    <input type="image" class="form-control" id="arq" name="arq" accept="image/*" required
                         onchange="previewImage(event)">
                     <img id="preview" src="#" alt="Preview da Imagem" style="display:none; max-width:300px;">
                 </div>
                 <div class="col-md-4">
                     <label for="datanasc" class="form-label">Data de Nascimento</label>
                     <input type="date" class="form-control" id="datanasc" name="datanasc" min="1906-01-01" max="2012-12-12" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="CPF" class="form-label">CPF</label>
+                    <input type="text" class="form-control" id="doc" name="CPF" placeholder="123.456.789-00" required>
                 </div>
                 <div class="col-12">
                     <div class="form-check">
