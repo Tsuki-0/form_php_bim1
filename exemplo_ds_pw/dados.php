@@ -8,34 +8,80 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/exemplo.css">
+    <style>
+        nav {
+            margin-bottom: 5vh;
+            background-color: black;
+        }
+
+        .main-container {
+            margin-top: 2vh;
+        }
+
+        /* Estilização do título */
+        .form-container h1 {
+            text-align: center;
+            color: #000;
+            position: relative;
+        }
+
+        .form-container h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 285px;
+            height: 4px;
+            background: linear-gradient(90deg, #00eb14d3, #027a0cd3);
+            border-radius: 2px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1 id="teste">Dados de requisições GET e POST</h1>
-    <?php
-        if (isset($_GET["var1"]) && isset($_GET["var2"])) {
-            $var1 = $_GET['var1'];
-            $var2 = $_GET['var2'];
-            echo "<p>O valor informado: {$_GET['var1']}</p>\n";
-            echo "<p>O valor informado: $var2</p>\n";
-        }
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $var = $_GET["var"];
-            $nome = $_POST["nome"];
-            $endereco = $_POST["endereco"];
-            $datanasc = $_POST["datanasc"];
-            //arquivo
-            $arq = $_FILES["arq"]["name"];
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="img/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                Urbus
+            </a>
+        </div>
+    </nav>
 
-            echo "<h2>Dados do form:</h2>\n";
-            echo "\t<p>Nome: $nome</p>\n";
-            echo "\t<p>Endereço: {$_POST["endereco"]}</p>\n";
-            echo "\t<p>Data Nasc.: $datanasc</p>\n";
-            echo "\t<p>Arquivo: $arq</p>\n";
-            echo "\t<p>Var.: $var</p>\n";
+    <div class="main-container">
+        <div class="form-container">
+            <h1 id="teste">Dados Do Form</h1>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $email = $_POST["email"];
+                $senha = $_POST["senha"];
+                $endereco = $_POST["endereco"];
+                $datanasc = $_POST["datanasc"];
+                $arq = $_FILES["arq"]["name"];
 
-        }
-    ?>
+                // Formatar para dd-mm-yyyy
+                $dataFormatada = date("d-m-Y", strtotime($datanasc));
+
+                // Verifica se o checkbox foi marcado
+                if (isset($_POST["manterLogin"])) {
+                    $manterLogin = "Sim";
+                    $mensagemLogin = "Manter login";
+                } else {
+                    $manterLogin = "Não";
+                    $mensagemLogin = "Não manter login";
+                }
+                echo "\t<p><b>Email:</b> $email</p>\n";
+                echo "\t<p><b>Senha:</b> $senha</p>\n";
+                echo "\t<p><b>Endereço:</b> $endereco</p>\n";
+                echo "\t<p><b>Data Nasc.:</b> $dataFormatada</p>\n";
+                echo "\t<p><b>Arquivo:</b> $arq</p>\n";
+                echo "\t<p><b>Manter Login:</b> $manterLogin</p>\n";
+            }
+            ?>
+        </div>
+    </div>
 </body>
 
 </html>

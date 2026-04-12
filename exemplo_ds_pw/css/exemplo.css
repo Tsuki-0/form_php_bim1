@@ -1,3 +1,99 @@
-h1 {
-    color: rgb(35, 82, 224);
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+}
+
+body {
+    min-height: 100vh;
+    background: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container principal para centralização */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilização do formulário com sombras */
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px;
+    padding: 40px;
+    background: #f4f4f4;
+    border-radius: 20px;
+    /* Múltiplas camadas de sombra para efeito mais profundo */
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.1),
+        0 10px 20px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+        0 0 20px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Animação suave de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Melhorias nos campos do formulário */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #00eb14d3;
+    box-shadow: 0 0 0 0.2rem rgba(0, 235, 20, 0.25);
+}
+
+.form-label {
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Botão estilizado com novo gradiente */
+.btn-primary {
+    background: linear-gradient(135deg, #13b921 0%, #018d0dd3 100%);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 235, 20, 0.4);
+}
+
+/* Checkbox estilizado com nova cor */
+.form-check-input:checked {
+    background-color: #00eb14d3;
+    border-color: #00eb14d3;
+}
+
+.form-container h2 {
+    font-size: 1.5rem;
+}
+
+/* Estilização do campo de imagem */
+input[type="image"] {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
 }
