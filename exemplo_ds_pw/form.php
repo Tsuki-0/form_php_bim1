@@ -73,8 +73,8 @@
                         required>
                 </div>
                 <div class="col-md-2">
-                    <label for="arq" class="form-label">Imagem</label>
-                    <input type="image" class="form-control" id="arq" name="arq" accept="image/*" required
+                    <label for="arq" class="form-label">Selecione uma imagem</label>
+                    <input type="file" class="form-control" id="arq" name="arq" accept="image/*" required
                         onchange="previewImage(event)">
                     <img id="preview" src="#" alt="Preview da Imagem" style="display:none; max-width:300px;">
                 </div>
@@ -86,7 +86,7 @@
                 <div class="col-md-6">
                     <label for="CPF" class="form-label">CPF</label>
                     <input type="text" class="form-control" id="doc" name="CPF" placeholder="123.456.789-00" required
-                        onchange="formatCPF(input)">
+                        onchange="formatCPF(this)">
                 </div>
                 <div class="col-12">
                     <div class="form-check">
