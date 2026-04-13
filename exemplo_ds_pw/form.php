@@ -60,7 +60,8 @@
             <form action="dados.php" method="post" enctype="multipart/form-data" class="row g-3">
                 <div class="col-md-6">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@email.com" required>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="seuemail@email.com"
+                        required>
                 </div>
                 <div class="col-md-6">
                     <label for="senha" class="form-label">Senha</label>
@@ -68,7 +69,8 @@
                 </div>
                 <div class="col-12">
                     <label for="endereco" class="form-label">Endereço</label>
-                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Bairro, Rua 1234" required>
+                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Bairro, Rua 1234"
+                        required>
                 </div>
                 <div class="col-md-2">
                     <label for="arq" class="form-label">Imagem</label>
@@ -78,15 +80,18 @@
                 </div>
                 <div class="col-md-4">
                     <label for="datanasc" class="form-label">Data de Nascimento</label>
-                    <input type="date" class="form-control" id="datanasc" name="datanasc" min="1906-01-01" max="2012-12-12" required>
+                    <input type="date" class="form-control" id="datanasc" name="datanasc" min="1906-01-01"
+                        max="2012-12-12" required>
                 </div>
                 <div class="col-md-6">
                     <label for="CPF" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="doc" name="CPF" placeholder="123.456.789-00" required>
+                    <input type="text" class="form-control" id="doc" name="CPF" placeholder="123.456.789-00" required
+                        onchange="formatCPF(input)">
                 </div>
                 <div class="col-12">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="manterLogin" name="manterLogin" value="Manter">
+                        <input class="form-check-input" type="checkbox" id="manterLogin" name="manterLogin"
+                            value="Manter">
                         <label class="form-check-label" for="manterLogin">
                             Manter login neste dispositivo
                         </label>
@@ -107,7 +112,7 @@
             const input = event.target;
             const reader = new FileReader();
 
-            reader.onload = function() {
+            reader.onload = function () {
                 const dataURL = reader.result;
                 const output = document.getElementById('preview');
                 output.src = dataURL;
@@ -117,6 +122,16 @@
             if (input.files[0]) {
                 reader.readAsDataURL(input.files[0]);
             }
+        }
+        function formatCPF(input) {
+            let cpf = input.value.replace(/\D/g, '');
+            if (cpf.length > 11) {
+                cpf = cpf.slice(0, 11); 
+            }
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            input.value = cpf;
         }
     </script>
 </body>
